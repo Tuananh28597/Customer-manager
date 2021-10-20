@@ -1,0 +1,49 @@
+plugins {
+    id 'war'
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    mavenCentral()
+}
+
+dependencies {
+
+// serlet, spring
+    providedCompile group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
+    implementation group: 'javax.servlet', name: 'jstl', version: '1.2'
+    implementation group: 'org.springframework', name: 'spring-core', version: '5.3.10'
+    implementation group: 'org.springframework', name: 'spring-context', version: '5.3.10'
+    implementation group: 'org.springframework', name: 'spring-beans', version: '5.3.10'
+    implementation group: 'org.springframework', name: 'spring-web', version: '5.3.10'
+    implementation group: 'org.springframework', name: 'spring-webmvc', version: '5.3.10'
+    implementation group: 'org.thymeleaf', name: 'thymeleaf-spring5', version: '3.0.12.RELEASE'
+    implementation group: 'nz.net.ultraq.thymeleaf', name: 'thymeleaf-layout-dialect', version: '3.0.0'
+
+
+//upload file
+    implementation group: 'ognl', name: 'ognl', version: '3.2.21'
+    implementation group: 'commons-fileupload', name: 'commons-fileupload', version: '1.4'
+
+
+// Orm, jpa
+    implementation group: 'org.hibernate', name: 'hibernate-core', version: '5.3.0.Final'
+    implementation group: 'org.hibernate', name: 'hibernate-entitymanager', version: '5.3.0.Final'
+    implementation group: 'org.springframework', name: 'spring-orm', version: '5.3.11'
+    implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.26'
+    implementation group: 'org.springframework.data', name: 'spring-data-jpa', version: '2.5.5'
+
+    //validate
+    implementation group: 'javax.validation', name: 'validation-api', version: '2.0.1.Final'
+    implementation group: 'org.hibernate', name: 'hibernate-validator', version: '6.0.10.Final'
+
+
+}
+
+test {
+    useJUnitPlatform()
+}

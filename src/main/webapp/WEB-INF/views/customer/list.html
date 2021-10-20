@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<p id="create">
+    <a href="/customer/create-customer">Create new customer</a>
+</p>
+<form action="/customer/" method="get">
+    <input type="text" name="q" placeholder="search">
+    <button>Search</button>
+</form>
+
+<th:block  th:each="i : ${#numbers.sequence(0, customers.totalPages - 1)}">
+    <li class="page-item active" th:if="${customers.number == i}">
+        <a class="page-link" th:href="@{'/customer'(page=${i})}" th:text="${i}"></a>
+    </li>
+    <li class="page-item" th:if="${customers.number != i}">
+        <a class="page-link" th:href="@{'/customer'(page=${i})}" th:text="${i}"></a>
+    </li>
+</th:block>
+
+
+<h1>Customers</h1>
+<table >
+    <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Image</th>
+        <th>Edit</th>
+        <th>Delet</th>
+    </tr>
+        <tr th:each="customer : ${customers}">
+            <td th:text="${customer.name}"></td>
+            <td th:text="${customer.age}"></td>
+            <td><img width="150" height="150" th:src="@{'/File/' + ${customer.image}}"></td>
+            <td><a th:href="@{/customer/edit-customer/__${customer.id}__}">Edit</a></td>
+            <td><a th:href="@{/customer/delete-customer/__${customer.id}__}">Delete</a></td>
+        </tr>
+
+</table>
+<!--<footer th:replace="/layout :: footer">-->
+
+<!--</footer>-->
+</body>
+</html>
